@@ -36,7 +36,7 @@ def skip_saving_file(sender, instance, **kwargs):
 @receiver(post_save, sender="jobs.Submission")
 def save_file(sender, instance, created, **kwargs):
     if created and hasattr(instance, "_input_file"):
-        instance.input_file = getattr(instance, "_input_file")
+        instance.input_file = instance._input_file
         instance.save()
 
 
